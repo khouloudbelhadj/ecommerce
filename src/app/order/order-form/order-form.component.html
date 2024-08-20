@@ -1,0 +1,59 @@
+<div class="order-form-container">
+  <h2>{{ isEditMode ? 'Edit Order' : 'Add New Order' }}</h2>
+  <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="reference">Reference:</label>
+      <input
+        type="text"
+        id="reference"
+        formControlName="reference"
+        required
+        class="form-control"
+      />
+      <div *ngIf="orderForm.get('reference')?.invalid && orderForm.get('reference')?.touched">
+        Reference is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="dateOrder">Order Date:</label>
+      <input
+        type="date"
+        id="dateOrder"
+        formControlName="dateOrder"
+        required
+        class="form-control"
+      />
+      <div *ngIf="orderForm.get('dateOrder')?.invalid && orderForm.get('dateOrder')?.touched">
+        Order Date is required.
+      </div>
+    </div>
+
+    <!-- Success Message -->
+    <div *ngIf="successMessage" class="alert alert-success mt-3">
+      {{ successMessage }}
+    </div>
+
+    <div class="button-group">
+      <button type="submit" class="btn btn-primary" [disabled]="orderForm.invalid">
+        <i class="fas fa-check"></i> {{ isEditMode ? 'Update' : 'Add' }}
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary"
+        (click)="onCancel()"
+      >
+        <i class="fas fa-times"></i> Cancel
+      </button>
+      <button
+        *ngIf="isEditMode"
+        type="button"
+        class="btn btn-danger"
+        (click)="onDelete()"
+      >
+        <i class="fas fa-trash"></i> Delete
+      </button>
+    </div>
+  </form>
+  
+</div>

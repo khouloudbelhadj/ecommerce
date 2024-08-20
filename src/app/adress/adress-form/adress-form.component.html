@@ -1,0 +1,69 @@
+<div class="adress-form-container">
+  <h2>{{ isEditMode ? 'Edit Address' : 'Add New Address' }}</h2>
+  <form [formGroup]="adressForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="street">Street :</label>
+      <input
+        type="text"
+        id="street"
+        formControlName="street"
+        required
+        class="form-control"
+      />
+      <div *ngIf="adressForm.get('street')?.invalid && adressForm.get('street')?.touched">
+        Street is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="houseNumber">House Number :</label>
+      <input
+        type="text"
+        id="houseNumber"
+        formControlName="houseNumber"
+        required
+        class="form-control"
+      />
+      <div *ngIf="adressForm.get('houseNumber')?.invalid && adressForm.get('houseNumber')?.touched">
+        House Number is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="zipCode">Zip Code :</label>
+      <input
+        type="text"
+        id="zipCode"
+        formControlName="zipCode"
+        required
+        class="form-control"
+      />
+      <div *ngIf="adressForm.get('zipCode')?.invalid && adressForm.get('zipCode')?.touched">
+        Zip Code is required.
+      </div>
+    </div>
+
+    <div class="form-buttons">
+      <button type="submit" class="btn btn-primary" [disabled]="adressForm.invalid">
+        <i class="fas fa-check"></i> {{ isEditMode ? 'Update' : 'Add' }}
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary"
+        (click)="router.navigate(['/adress/list'])"
+      >
+      <i class="fas fa-times"> </i> Cancel</button>
+      <button
+        *ngIf="isEditMode"
+        type="button"
+        class="btn btn-danger"
+        (click)="onDelete()"
+      ><i class="fa fa-trash"></i>
+         Delete </button>
+    </div>
+  </form>
+
+  <div *ngIf="successMessage" class="alert alert-success mt-3">
+    {{ successMessage }}
+  </div>
+</div>

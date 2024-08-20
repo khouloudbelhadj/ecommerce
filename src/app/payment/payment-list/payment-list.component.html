@@ -1,0 +1,31 @@
+<div class="payment-container">
+    <div class="header">
+        <div class="title-container">
+         <h2 class="title">Payments List</h2>
+        </div>
+
+     <button class="btn btn-primary" (click)="navigateToAddPayment()">
+        <i class="fas fa-plus"></i> Add Payment
+     </button>
+    </div>
+<br>
+    <table class="payment-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Reference</th>
+                <th>Amount</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let payment of payments">
+                <td>{{ payment.id }}</td>
+                <td>{{ payment.reference }}</td>
+                <td>{{ payment.amount | number:'1.2-2' }}</td>
+                <td>{{ payment.status }}</td>
+            </tr>
+        </tbody>
+    </table> 
+
+</div>

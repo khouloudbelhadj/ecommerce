@@ -1,0 +1,151 @@
+/* Ensure the page body takes the full height and has no margin */
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 125vh;
+  background-color: #f4f6f9; /* Optional: Light background color */
+}
+
+.card-header {
+  background-color: rgb(255, 98, 0);
+  color: #fff;
+}
+
+/* Center the registration box and add padding */
+.register-box {
+  width: 80%;
+  max-width: 500px; /* Set a maximum width to prevent stretching */
+  margin: 20px; /* Add margin for spacing from edges */
+  padding: 20px;
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+/* Ensure card is responsive */
+.card {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Optional: Add subtle shadow */
+}
+
+/* Style the card header */
+.card-header {
+  border-bottom: 1px solid #dee2e6;
+  padding: 15px;
+}
+
+/* Style the title inside the card */
+.title {
+  font-size: 2rem;
+  color: black;
+  margin: 0;
+}
+
+/* Style the card body */
+.card-body {
+  padding: 20px;
+}
+
+/* Style the card title */
+.card-title {
+  font-size: 1.25rem;
+  color: black;
+  margin-bottom: 20px;
+}
+
+/* Style form-group */
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Style labels in form-group */
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Ensure form controls span the full width */
+.form-control {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* Style address fields to wrap correctly */
+.address-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.address-fields input {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Style the button group */
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px; /* Add top margin for spacing */
+}
+
+/* Style buttons */
+.btn-outline-primary,
+.btn-outline-secondary {
+  font-size: 1rem;
+  padding: 10px 15px;
+}
+
+/* Style focused state for buttons */
+.btn-outline-primary:focus,
+.btn-outline-secondary:focus {
+  color: #000 !important;
+  background-color: #f8f9fa !important;
+  border-color: #ced4da !important;
+}
+
+/* Style secondary button */
+.btn-outline-secondary {
+  background-color: #e2e6ea;
+  border-color: #ced4da;
+}
+
+/* Ensure form and buttons do not overflow on smaller screens */
+@media (max-width: 767px) {
+  .form-group {
+    margin-bottom: 10px;
+  }
+
+  .address-fields {
+    flex-direction: column;
+  }
+
+  .address-fields input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .btn-group {
+    flex-direction: column;
+  }
+}
+
+/* Style social auth links */
+.social-auth-links {
+  margin-top: 20px;
+}
+
+.social-auth-links a {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.social-auth-links .btn {
+  font-size: 1rem;
+  padding: 10px;
+}

@@ -1,0 +1,24 @@
+<div class="adress-container">
+    <div class="title-container">
+        <h2 class="title">Addresses List</h2>
+    </div>
+    <br>
+    <table class="adress-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Street</th>
+                <th>House Number</th>
+                <th>Zip Code</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let adress of adresses">
+                <td>{{ adress.id }}</td>
+                <td>{{ adress.street }}</td>
+                <td>{{ adress.houseNumber }}</td>
+                <td>{{ adress.zipCode }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

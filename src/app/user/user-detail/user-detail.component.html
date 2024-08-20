@@ -1,0 +1,34 @@
+<section class="user-detail-container">
+  <div class="title-container">
+    <h2 class="title">User Details</h2>
+  </div>
+  <br>
+  <div *ngIf="user" class="user-detail-card">
+    <div class="user-detail-header">
+      <h3>{{ user.email }}</h3>
+      <p><strong>Status:</strong> {{ user.status }}</p>
+    </div>
+    <div class="user-detail-body">
+      <p><strong>ID:</strong> {{ user.id }}</p>
+      <p><strong>Code:</strong> {{ user.code }}</p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+      <p><strong>First Name:</strong> {{ user.firstName }}</p>
+      <p><strong>Last Name:</strong> {{ user.lastName }}</p>
+      <p><strong>Phone Number:</strong> {{ user.phoneNumber }}</p>
+      <p><strong>M.F:</strong> {{ user.mf }}</p>
+      <p *ngIf="user.adress">
+        <strong>Address:</strong> {{ user.adress.street }}, {{ user.adress.houseNumber }}, {{ user.adress.zipCode }}
+      </p>
+      <p *ngIf="!user.adress"><strong>Address:</strong> None</p>
+      <p><strong>City:</strong> {{ user.ville }}</p>
+      <p><strong>Status:</strong> {{ user.status }}</p>
+    </div>
+    
+    <div class="user-detail-actions">
+      <a [routerLink]="['/user/form', user.id]" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+      <a (click)="deleteUser(user.id)" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
+    </div>
+  </div>
+  <br>
+  <a [routerLink]="['/user/list']" class="btn btn-primary">Back to Users List</a>
+</section>

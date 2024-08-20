@@ -1,0 +1,23 @@
+<div class="order-line-container">
+    <h2 class="title">Order Lines List</h2>
+    <table class="order-line-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Quantity</th>
+                <th>Product Name</th>
+                <th>Order ID</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let orderLine of orderLines">
+                <td>{{ orderLine.id }}</td>
+                <td>{{ orderLine.quantity }}</td>
+                <td>{{ orderLine.product.id }}</td>
+                <td>{{ orderLine.order.id }}</td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>

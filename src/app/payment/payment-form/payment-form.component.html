@@ -1,0 +1,166 @@
+<div class="payment-form-container">
+  <h2>Payment Confirmation</h2>
+  
+  <!-- Cart Items Section -->
+  <div class="cart-items">
+    <div class="cart-item" *ngFor="let item of cartItems">
+      <img [src]="item.product.imageProduct" alt="{{ item.product.name }}" class="cart-item-image">
+      
+      <div class="cart-item-details">
+        <h3>{{ item.product.name }}</h3>
+        <p><strong>In Stock</strong></p>
+        
+        <div class="cart-item-quantity">
+          <p>Qty: {{ item.quantity }}</p>
+        </div>
+      </div>
+      
+      <div class="cart-item-price">
+        <p>{{ item.product.price | currency }}</p>
+        <p><strong>Total:</strong> {{ item.product.price * item.quantity | currency }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Summary -->
+  <div class="cart-summary">
+    <p><strong>Subtotal ({{ cartItems.length }} items):</strong> {{ getCartTotal() | currency }}</p>
+  </div>
+
+  <!-- Payment Form Section -->
+  <h2>Payment Form</h2>
+  <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="reference">Reference:</label>
+      <input
+        type="text"
+        id="reference"
+        formControlName="reference"
+        required
+        class="form-control"
+      />
+      <div *ngIf="paymentForm.get('reference')?.invalid && paymentForm.get('reference')?.touched">
+        Reference is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="amount">Amount:</label>
+      <input
+        type="number"
+        id="amount"
+        formControlName="amount"
+        required
+        class="form-control"
+        [value]="getCartTotal()"
+        readonly
+      />
+      <div *ngIf="paymentForm.get('amount')?.invalid && paymentForm.get('amount')?.touched">
+        Amount is required and must be greater than 0.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="status">Status:</label>
+      <select
+        id="status"
+        formControlName="status"
+        required
+        class="form-control"
+        (change)="onStatusChange($event)"
+      >
+        <option value="" disabled>Select status</option>
+        <option *ngFor="let status of paymentStatuses" [value]="status">{{ status }}</option>
+      </select>
+      <div *ngIf="paymentForm.get('status')?.invalid && paymentForm.get('status')?.touched">
+        Status is required.
+      </div>
+    </div>
+
+    <!-- Card Payment Form -->
+    <div *ngIf="selectedStatus === 'Card'">
+      <div class="form-group">
+        <label for="cardNumber">Card Number:</label>
+        <input
+          type="text"
+          id="cardNumber"
+          formControlName="cardNumber"
+          required
+          class="form-control"
+        />
+        <div *ngIf="paymentForm.get('cardNumber')?.invalid && paymentForm.get('cardNumber')?.touched">
+          Card Number is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="expirationDate">Expiration Date:</label>
+        <input
+          type="text"
+          id="expirationDate"
+          formControlName="expirationDate"
+          required
+          class="form-control"
+        />
+        <div *ngIf="paymentForm.get('expirationDate')?.invalid && paymentForm.get('expirationDate')?.touched">
+          Expiration Date is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="cvv">CVV:</label>
+        <input
+          type="text"
+          id="cvv"
+          formControlName="cvv"
+          required
+          class="form-control"
+        />
+        <div *ngIf="paymentForm.get('cvv')?.invalid && paymentForm.get('cvv')?.touched">
+          CVV is required.
+        </div>
+      </div>
+    </div>
+
+    <!-- PayPal Payment Form -->
+    <div *ngIf="selectedStatus === 'PayPal'">
+      <div class="form-group">
+        <label for="paypalEmail">PayPal Email:</label>
+        <input
+          type="email"
+          id="paypalEmail"
+          formControlName="paypalEmail"
+          required
+          class="form-control"
+        />
+        <div *ngIf="paymentForm.get('paypalEmail')?.invalid && paymentForm.get('paypalEmail')?.touched">
+          PayPal Email is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="paypalPassword">PayPal Password:</label>
+        <input
+          type="password"
+          id="paypalPassword"
+          formControlName="paypalPassword"
+          required
+          class="form-control"
+        />
+        <div *ngIf="paymentForm.get('paypalPassword')?.invalid && paymentForm.get('paypalPassword')?.touched">
+          PayPal Password is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-container">
+      <button type="button" class="btn btn-back" (click)="onBack()"><i class="fas fa-arrow-left"> </i>  Back</button>
+      <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i> Submit Payment</button>
+      <button type="button" class="btn btn-secondary" (click)="onCancel()"><i class="fas fa-times"></i>  Cancel</button>
+    </div>
+    </form>
+
+  <div *ngIf="successMessage" class="alert alert-success mt-3">
+    {{ successMessage }}
+  </div>
+</div>

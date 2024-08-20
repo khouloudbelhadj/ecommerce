@@ -1,0 +1,30 @@
+<div *ngIf="product" class="product-detail-container">
+    <h2 class="title">Product Details</h2>
+  
+    <div class="product-detail-card">
+      <img [src]="product.imageProduct" alt="{{ product.name }}" class="product-detail-image">
+      <div class="product-detail-info">
+        <h3>{{ product.name }}</h3>
+        <p><strong>Reference:</strong> {{ product.reference }}</p>
+        <p><strong>Category:</strong> {{ product.category?.name || 'No category assigned' }}</p>
+        <p><strong>Description:</strong> {{ product.description }}</p>
+        <p><strong>Available Quantity:</strong> {{ product.availableQuantity }}</p>
+        <p><strong>Price:</strong> {{ product.price | currency }}</p>
+  
+        <button class="edit-btn" (click)="editProduct(product)">
+          <i class="fas fa-edit"></i> Edit
+        </button>
+        <button class="delete-btn" (click)="deleteProduct(product)">
+          <i class="fas fa-trash-alt"></i> Delete
+        </button>
+        <div *ngIf="successMessage" class="success-message">
+          {{ successMessage }}
+        </div>
+      </div>
+    </div>
+  
+    <button class="back-to-list-btn" (click)="navigateToProductList()">
+      <i class="fas fa-arrow-left"></i> Back to Product List
+    </button>
+  </div>
+  

@@ -1,0 +1,35 @@
+<div class="product-container">
+  <div class="header">
+    <div class="title-container">
+      <h2 class="title">Available Products {{ categoryName }}</h2>
+    </div>
+    <button class="my-cart-btn" (click)="navigateToCart()">My Cart <i class="fas fa-shopping-cart"></i></button>
+  </div>
+
+  <div *ngIf="successMessage" class="success-message">
+    {{ successMessage }}
+  </div>
+
+  <button class="back-to-list-btn" (click)="navigateBackToCategories()"><i class="fas fa-arrow-left"></i>  Back to Categories List</button>
+
+  <div class="product-grid">
+    <div class="product-card" *ngFor="let product of products">
+      <img [src]="product.imageProduct" 
+           alt="{{ product.name }}" 
+           class="product-image"
+           (click)="toggleDetailsVisibility(product)">
+      <div class="product-details">
+        <h3>{{ product.name }}</h3>
+        <p class="product-price">
+          <strong>Price:</strong> {{ product.price | currency }}
+        </p>
+        <button *ngIf="product.showDetails" class="more-details-btn" (click)="viewDetails(product)">
+          <i class="fas fa-info-circle"></i> More Details
+        </button>
+        <button class="add-to-cart-btn" (click)="addToCart(product)">
+          <i class="fas fa-cart-plus"></i> Add to Cart
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

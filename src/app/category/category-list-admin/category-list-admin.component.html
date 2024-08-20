@@ -1,0 +1,42 @@
+<div class="category-container">
+  <div class="header">
+    <div class="title-container">
+      <h2 class="title">Categories List</h2>
+    </div>
+    <div class="header-buttons">
+      <button class="new-category-btn" (click)="addNewCategory()">
+        <i class="fas fa-plus"></i> Add New Category
+      </button>
+    </div>
+  </div>
+
+  <div class="search-sort-wrapper">
+    <div class="search-wrapper">
+      <input type="text" [(ngModel)]="searchQuery" class="search-input" placeholder="Search categories">
+      <button class="search-button" (click)="searchCategories()">
+        <i class="fa fa-search"></i> Search
+      </button>
+    </div>
+    <div class="sort-wrapper">
+      <button class="sort-button" (click)="toggleSortOrder()">
+        <i class="fa fa-sort"></i> Sort {{ isAscending ? 'Descending' : 'Ascending' }}
+      </button>
+    </div>
+  </div>
+
+  <div class="category-grid">
+    <div class="category-card" *ngFor="let category of filteredCategories" (click)="viewProducts(category.id)">
+      <img [src]="category.imageCategory" alt="{{ category.name }}" class="category-image">
+      <div class="category-details">
+        <h3>{{ category.name }}</h3>
+        <p>{{ category.description }}</p>
+        <button class="edit-btn" (click)="editCategory(category.id, $event)">
+          <i class="fas fa-edit"></i>
+        </button>
+        <button class="delete-btn" (click)="deleteCategory(category.id, $event)">
+          <i class="fas fa-trash-alt"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="cart-container">
+  <h2 class="title">Your Cart</h2>
+  
+  <div class="cart-items">
+    <div class="cart-item" *ngFor="let item of cartItems">
+      <img [src]="item.product.imageProduct" alt="{{ item.product.name }}" class="cart-item-image">
+      
+      <div class="cart-item-details">
+        <h3>{{ item.product.name }}</h3>
+        <p><strong>In Stock</strong></p>
+        
+        <div class="cart-item-quantity">
+          <label for="quantity">Qty:</label>
+          <div class="quantity-control">
+            <button (click)="decreaseQuantity(item)" class="quantity-btn">-</button>
+            <input type="number" [(ngModel)]="item.quantity" (change)="updateCart()" min="1" class="quantity-input">
+            <button (click)="increaseQuantity(item)" class="quantity-btn">+</button>
+          </div>
+          <button (click)="removeItem(item)" class="delete-btn"><i class="fas fa-trash"></i></button>
+        </div>
+      </div>
+      
+      <div class="cart-item-price">
+        <p>{{ item.product.price | currency }}</p>
+        <p><strong>Total:</strong> {{ item.product.price * item.quantity | currency }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cart-summary">
+    <p><strong>Subtotal ({{ cartItems.length }} items):</strong> {{ getCartTotal() | currency }}</p>
+  </div>
+
+  <div class="btn-container">
+    <button (click)="router.navigate(['/product/list'])" class="back-to-list-btn"><i class="fas fa-arrow-left"></i> 
+          Back to Products List
+    </button>
+    
+    <button (click)="placeOrder()" class="btn btn-primary"><i class="fas fa-check-circle"></i>
+           Place Order
+    </button>
+  </div>
+
+</div>

@@ -1,0 +1,100 @@
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.title-container {
+  text-align: center;
+  margin-bottom: 20px; 
+}
+
+.title {
+  font-size: 2.5rem; 
+  color: black;
+  margin: 0;
+}
+
+.card {
+  width: 100%;
+  max-width: 800px; 
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 1.5rem; 
+  color: #333;
+  margin-bottom: 20px; 
+}
+
+.form-group {
+  margin-bottom: 20px; 
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-control {
+  width: 100%;
+  padding: 5px; 
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.address-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; 
+}
+
+.address-fields input {
+  flex: 1;
+  min-width: 0; 
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 15px; 
+}
+
+.btn-outline-primary,
+.btn-outline-secondary,
+.btn-danger {
+  font-size: 1rem;
+  padding: 10px 15px; 
+}
+
+.btn-outline-primary:focus,
+.btn-outline-secondary:focus,
+.btn-danger:focus {
+  color: #000 !important;
+  background-color: #f8f9fa !important;
+  border-color: #ced4da !important;
+}
+.form-group select {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.form-group select[multiple] {
+  height: auto; /* Allows the dropdown to expand based on content */
+}
+
+.form-group option {
+  padding: 5px;
+}

@@ -1,0 +1,50 @@
+.user-detail-container {
+    padding: 20px;
+  }
+  
+  .title-container {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 40px;
+    margin: 0;
+    color: black;
+  }
+  
+  .user-detail-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+  }
+  
+  .user-detail-header {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
+  .user-detail-header h3 {
+    font-size: 20px;
+    margin: 0;
+  }
+  
+  .user-detail-body {
+    margin-bottom: 20px;
+  }
+  
+  .user-detail-body p {
+    font-size: 16px;
+    margin: 5px 0;
+  }
+  
+  .user-detail-actions {
+    text-align: center;
+  }
+  
+  .user-detail-actions .btn {
+    margin: 0 5px;
+  }
+  

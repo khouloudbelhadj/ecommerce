@@ -1,0 +1,29 @@
+<section class="notification-container">
+  <div class="header">
+    <div class="title-container">
+          <h2 class="title">Notifications List</h2>
+    </div>
+    <button class="btn btn-primary" (click)="navigateToAddNotification()">
+      <i class="fas fa-plus"></i> Add Notification
+    </button>
+  </div>
+  <div class="notification-grid">
+    <div class="notification-card" *ngFor="let notification of notifications">
+      <div class="notification-icon">
+        <i class="fas fa-bell"></i>
+      </div>
+      <div class="notification-details">
+        <p class="notification-content">{{ notification.content }}</p>
+        <p class="notification-date">{{ notification.date | date:'short' }}</p>
+      </div>
+      <div class="notification-actions">
+        <a class="edit-btn" (click)="onUpdate(notification)">
+          <i class="fas fa-edit"></i> 
+        </a>
+        <a class="delete-btn" (click)="onDelete(notification)">
+          <i class="fas fa-trash"></i> 
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
